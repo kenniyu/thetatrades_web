@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thetatrades</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container main">
+  <div class="navigation">
+    <nav class="nav-bar">
+      <ul class="nav-bar-list pull-left">
+        <li class="nav-item home"><%= link_to "Home", root_path %></li>
+        <li class="nav-item blog"><%= link_to "Blog", "//www.thetatrades.com", target: "_blank" %></li>
+      </ul>
+      <ul class="nav-bar-list pull-right">
+        <% if current_user %>
+          <li class="nav-item sign-up"><%= link_to current_user.email, edit_user_registration_path %>
+          <li class="nav-item sign-up"><%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <li class="nav-item sign-in"><%= link_to "Sign In", new_user_session_path %></li>
+          <li class="nav-item sign-up"><%= link_to "Sign Up", new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+  <div class="controller-content <%= params[:controller] %>">
+    <%= yield %>
+  </div>
+</div>
+
+</body>
+</html>

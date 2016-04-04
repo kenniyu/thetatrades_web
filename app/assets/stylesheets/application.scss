@@ -1,0 +1,88 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  margin: auto;
+  // max-width: 960px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: 200;
+
+  .controller-content {
+    padding: 0 10px;
+  }
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.nav-bar {
+  background: #000;
+  overflow: auto;
+
+  .nav-bar-list {
+    overflow: auto;
+
+    &.pull-left {
+      float: left;
+    }
+
+    &.pull-right {
+      float: right;
+    }
+  }
+
+  li {
+    float: left;
+
+    a {
+      padding: 10px;
+      display: inline-block;
+    }
+  }
+}
+
+a {
+  color: white;
+  text-decoration: none;
+
+  &:visited {
+    color: white;
+  }
+}
