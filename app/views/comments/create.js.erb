@@ -1,0 +1,15 @@
+// Add comment item
+var $commentsContainer = $('[data-commentable="<%= @comment.commentable_type.downcase %>-<%= @commentable.id %>"]');
+
+var $commentItem = $('<%= escape_javascript(render partial: "comments/comment", locals: { comment: @comment }) %>');
+$commentsContainer.find('.comments-list').prepend($commentItem);
+$commentItem.hide().slideDown();
+
+
+// Up comment count
+var $commentCount = $commentsContainer.closest('.trade-footer').find('.comments .count');
+var commentCount = parseInt($commentCount.text());
+$commentCount.text(commentCount + 1);
+
+var $commentsTextarea = $commentsContainer.find('textarea');
+$commentsTextarea.val('');

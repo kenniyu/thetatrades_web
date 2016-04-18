@@ -1,0 +1,48 @@
+<div class="trade-item">
+  <div class="trade-header">
+    <div class="user-photo">
+      <%= image_tag "https://robohash.org/#{trade.user.email}.png?size=320x320" %>
+    </div>
+    <div class="meta">
+      <div class="user-action">
+        <% if expandable %>
+          <span class="user"><%= link_to trade.user.email, "#" %></span>
+          <span class="user-post-filler">posted a trade idea on</span>
+          <span class="user-post-trade-ticker"><%= link_to "$#{trade.ticker.title}", trade %></span>
+        <% else %>
+          <%= "#{trade.user} posted a trade idea on $#{trade.ticker.title}" %>
+        <% end %>
+      </div>
+      <div class="trade-date-wrapper">
+        <p class="trade-date"><%= time_ago_in_words(trade.created_at) %> ago</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="trade-body">
+    <p class="trade-title"><%= trade.title %></p>
+    <div class="trade-description">
+      <%= markdown(trade.description) %>
+    </div>
+  </div>
+  <div class="trade-footer">
+    <div class="trade-actions">
+      <span class="likes"><%= link_to "Like", root_path %></span> -
+      <span class="comments">
+        <%= link_to "#", {class: "comment-toggle#{expandable ? " expandable" : ""}"} do %>
+          Comments (<span class="count"><%= trade.comments.count %></span>)
+        <% end %>
+        <!-- <%= link_to "Comments (#{trade.comments.count})", "#", class: "comment-toggle#{expandable ? " expandable" : ""}" %> -->
+      </span>
+    </div>
+    <div class="comments-container<% if expandable %> hidden<% end %>" data-commentable="trade-<%= trade.id %>">
+      <%= render partial: 'comments/form', locals: { commentable: trade } %>
+
+      <div class="comments-list">
+      <% trade.comments.each do |comment| %>
+        <%= render partial: 'comments/comment', locals: { comment: comment } %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

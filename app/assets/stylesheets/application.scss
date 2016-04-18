@@ -13,10 +13,16 @@
  *= require_tree .
  *= require_self
  */
+@import "globals";
 
 h1, h2, h3, h4, h5, h6 {
   text-align: center;
   font-weight: 500;
+  color: rgb(59, 55, 51);
+
+  &.pull-left {
+    text-align: left;
+  }
 }
 
 h1 {
@@ -28,16 +34,47 @@ h2 {
   font-weight: 400;
 }
 
+h4, h5, h6 {
+  text-align: left;
+  color: rgb(50, 50, 60);
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #888;
+
+  &:hover {
+    color: #333;
+  }
+}
+
 body {
   padding: 0;
   margin: 0;
   margin: auto;
-  // max-width: 960px;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-weight: 200;
+  background: #fff;
+  font-family: -apple-system, Helvetica, Arial, sans-serif;
+  color: rgb(171, 171, 171);
 
-  .controller-content {
-    padding: 0 10px;
+  .content {
+    overflow: auto;
+    min-width: 200px;
+    background: rgb(19, 26, 33);
+
+    .controller-content {
+      background: #fff;
+      overflow: auto;
+      margin: auto;
+    }
+
+    .sidebar-nav {
+      float: left;
+      width: 200px;
+    }
   }
 }
 
@@ -49,15 +86,33 @@ ul, ol {
     list-style-type: none;
     margin: 0;
     padding: 0;
+
+    a {
+      display: inline-block;
+    }
   }
 }
 
 .nav-bar {
-  background: #000;
+  position: relative;
   overflow: auto;
+  box-shadow: 1px 0 10px rgba(0, 0, 0, .2);
 
   .nav-bar-list {
     overflow: auto;
+
+    .logo {
+      margin-left: 5px;
+
+      a {
+        padding: 0;
+
+        img {
+          width: 56px;
+          height: 56px;
+        }
+      }
+    }
 
     &.pull-left {
       float: left;
@@ -72,17 +127,82 @@ ul, ol {
     float: left;
 
     a {
-      padding: 10px;
-      display: inline-block;
+      padding: 20px;
+      font-size: 14px;
+
+      &.active {
+        color: $app-green;
+        font-weight: 700;
+      }
     }
   }
 }
 
 a {
-  color: white;
   text-decoration: none;
 
-  &:visited {
-    color: white;
+  &:hover {
+    text-decoration: underline;
   }
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+
+  &[type=submit] {
+    color: #fff;
+    background: $app-green;
+    border: 0;
+    margin-top: 10px;
+  }
+}
+
+.sidebar-nav {
+  .new-trade-wrapper {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .new-trade-btn {
+    background: $app-green;
+    border-radius: 3px;
+    padding: 12px 0;
+    display: inline-block;
+    color: #fff;
+    box-sizing: border-box;;
+    width: 100%;
+  }
+}
+
+.sidebar-list {
+
+  .sidebar-item {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+
+    a {
+      padding: 20px;
+      display: block;
+    }
+
+    a:hover, a.active {
+      color: #fff;
+      background: rgb(23, 31, 40);
+    }
+  }
+}
+
+
+img {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  display: inline-block;
+  vertical-align: middle;
 }

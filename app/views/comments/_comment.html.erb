@@ -1,0 +1,15 @@
+<div class="comment-item">
+  <div class="comment-user">
+    <%= image_tag "https://robohash.org/#{comment.user.email}.png?size=320x320" %>
+  </div>
+  <div class="comment-content">
+    <p class="comment-header">
+      <span class="comment-user-email"><%= comment.user.email %></span>
+      <span class="comment-created-at"><%= time_ago_in_words(comment.created_at) %> ago</span>
+    </p>
+    <p class="comment-body"><%= comment.body %></p>
+    <div class="comment-footer">
+      <a href="#" class="comment-reply">Reply</a>
+    </div>
+  </div>
+</div>

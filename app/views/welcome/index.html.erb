@@ -1,2 +1,26 @@
-<h1>ThetaTrades</h1>
-<h2>Home of the Premium Milkers</h2>
+<div class="trades-container">
+  <% if current_user %>
+
+    <h6 class="pull-left">
+      <%= link_to image_tag("icon-feed.png", border: 0, class: "icon-feed", size: "12x12"), root_path %>
+      <%= link_to "Feed", root_path %>
+    </h6>
+    <div class="filter-container">
+      <ul class="filter-list">
+        <li class="filter-item<%= @filter == "all" ? " selected" : "" %>"><%= link_to "All", root_path %></li>
+        <li class="filter-item<%= @filter == "popular" ? " selected" : "" %>"><%= link_to "Popular", root_path(filter: "popular") %></li>
+        <li class="filter-item<%= @filter == "following" ? " selected" : "" %>"><%= link_to "Following", root_path(filter: "following") %></li>
+        <li class="filter-item<%= @filter == "mine" ? " selected" : "" %>"><%= link_to "Mine", root_path(filter: "mine") %></li>
+      </ul>
+    </div>
+  <% else %>
+    <h1>ThetaTrades</h1>
+    <h2>Home of the Premium Milkers</h2>
+  <% end %>
+
+  <div class="trades-list">
+    <% @trades.each do |trade| %>
+      <%= render partial: 'trades/trade_item', locals: { trade: trade, expandable: true } %>
+    <% end %>
+  </div>
+</div>

@@ -6,7 +6,14 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  # resources :trades
+  get 'symbol' => 'trades#symbol'
+  # post '/trades/:id/comment' => 'trades#comment'
+
+  get '/(:filter)' => 'welcome#index'
+
+  resources :trades do
+    resources :comments, module: :trades
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

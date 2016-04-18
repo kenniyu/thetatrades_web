@@ -1,0 +1,225 @@
+// Place all the styles related to the Trades controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "globals";
+
+.trade-idea-container {
+  .trade-idea-title {
+    text-align: left;
+  }
+}
+
+.new-trade-form-container {
+  margin: auto;
+  max-width: 600px;
+
+  label {
+    display: block;
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  .form-row {
+    margin-bottom: 20px;
+  }
+
+  .trade-submit {
+    text-align: center;
+
+    input {
+      display: inline-block;
+      border: 0;
+      padding: 10px;
+      width: 150px;
+      border-radius: 5px;
+      color: #fff;
+    }
+  }
+
+  .ui-menu-item {
+    list-style-type: none;
+    list-style-image: none;
+  }
+
+  .ui-widget {
+    font-family: -apple-system, Helvetica, Arial, sans-serif;
+  }
+
+  .ui-widget-content {
+    background: #fff;
+
+    &:hover {
+      background: #fff;
+    }
+
+    .ticker-result {
+      background: #fff;
+    }
+  }
+
+  .ui-menu .ui-menu-item a {
+    border: 0;
+    line-height: normal;
+    padding: 10px;
+    font-size: 14px;
+
+    &.ui-state-focus {
+      margin: 0;
+    }
+
+    .ticker-result-field {
+      display: inline-block;
+
+      &.ticker-symbol {
+        width: 100px;
+      }
+
+      &.ticker-name {
+        color: #aaa;
+      }
+
+      &.ticker-exch {
+        width: 100px;
+        float: right;
+      }
+    }
+  }
+
+  .ui-state-hover, .ui-state-focus {
+    background: #eee;
+
+    color: #000;
+
+    &:hover, &:focus {
+      background: #eee;
+    }
+  }
+}
+
+
+.trade-item {
+  width: 100%;
+  margin: 20px auto;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+
+  .trade-header {
+    padding: 20px 0;
+    color: #000;
+    overflow: auto;
+
+    .trade-date-wrapper {
+      margin-top: 10px;
+      color: #999;
+      font-size: 14px;
+      font-style: italic;
+    }
+
+    .user-photo {
+      float: left;
+
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        background: #ccc;
+      }
+    }
+
+    .meta {
+      float: left;
+      margin-left: 20px;
+    }
+
+    .user, .user-post-trade-ticker{
+      font-weight: 900;
+    }
+
+    .user a {
+      color: $app-green;
+    }
+
+    .user-post-trade-ticker a {
+      color: $ticker;
+    }
+  }
+
+  .trade-body {
+    padding: 0 0 20px 0;
+
+    .trade-title {
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .trade-description {
+      margin-top: 20px;
+    }
+  }
+
+  .trade-footer {
+    padding: 0 0 20px 0;
+  }
+
+  .comment-input-container {
+    margin-top: 20px;
+    overflow: auto;
+
+    .comment-post-btn {
+      float: right;
+      padding: 10px;
+    }
+  }
+
+  .comments-container {
+    &.hidden {
+      display: none;
+    }
+
+    .comment-post-btn {
+      width: 140px;
+      display: inline-block;
+    }
+
+    .comment-header {
+      margin-bottom: 5px;
+    }
+
+    .comment-created-at {
+      margin-left: 10px;
+      font-size: 12px;
+    }
+
+    .comment-user-email {
+      color: #000;
+      font-weight: 400;
+    }
+
+    .comment-item {
+      overflow: auto;
+      padding-top: 20px;
+    }
+
+    .comment-user {
+      float: left;
+      margin-right: 10px;
+
+      img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    .comment-content {
+      float: left;
+      width: 480px;
+
+      .comment-footer {
+        padding: 10px 0;
+      }
+    }
+  }
+}

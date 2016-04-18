@@ -1,0 +1,73 @@
+<h2>Post New Trade</h2>
+
+<div class="new-trade-form-container">
+
+  <%= form_for @trade do |f| %>
+    <div class="form-row trade-title-wrapper">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="form-row trade-ticker-wrapper">
+      <%= f.label :ticker %>
+      <%= f.text_field :ticker, class: "ticker-input" %>
+    </div>
+
+    <div class="form-row trade-description-wrapper">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "trade-description-input" %>
+    </div>
+
+    <div class="form-row trade-submit">
+      <%= f.submit "Create" %>
+    </div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  $('input.ticker-input').autocomplete({
+    source: function( request, response ) {
+      var inputText = $('input.ticker-input').val();
+      $.ajax({
+          dataType: "json",
+          data: { "query": inputText },
+          type : 'get',
+          url: '/symbol',
+          success: function(data) {
+            console.log(data);
+              // $('input.suggest-user').removeClass('ui-autocomplete-loading');
+              // // hide loading image
+              //
+              response( $.map( data, function(item) {
+                return {
+                  ticker: item.symbol,
+                  title: item.name,
+                  exch: item.exchDisp
+                };
+              }));
+          },
+          error: function(data) {
+            console.log(data);
+              // $('input.suggest-user').removeClass('ui-autocomplete-loading');
+          }
+      });
+    },
+    appendTo: ".trade-ticker-wrapper",
+    minLength: 2,
+    open: function() {},
+    close: function() {},
+    focus: function(event,ui) {},
+    select: function(event, ui) {
+      event.preventDefault();
+      $('.ticker-input').val(ui.item.ticker);
+      $('.trade-description-input').focus();
+    }
+  }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+      return $( "<li>" )
+      .append( '<a class="ticker-result"><span class="ticker-result-field ticker-symbol">' +
+      item.ticker + '</span><span class="ticker-result-field ticker-name">' +
+      item.title + '</span><span class="ticker-result-field ticker-exch">' +
+      item.exch + '</a>' )
+      .appendTo( ul );
+   };
+</script>

@@ -4,6 +4,10 @@
   <title>Thetatrades</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -12,7 +16,10 @@
   <div class="navigation">
     <nav class="nav-bar">
       <ul class="nav-bar-list pull-left">
-        <li class="nav-item home"><%= link_to "Home", root_path %></li>
+        <li class="nav-item logo">
+          <%= link_to image_tag("nav-logo.png", class: 'nav-logo'), root_path %>
+        </li>
+        <li class="nav-item blog"><%= link_to "ThetaTrades", root_path %></li>
         <li class="nav-item blog"><%= link_to "Blog", "//www.thetatrades.com", target: "_blank" %></li>
       </ul>
       <ul class="nav-bar-list pull-right">
@@ -26,10 +33,34 @@
       </ul>
     </nav>
   </div>
-  <div class="controller-content <%= params[:controller] %>">
-    <%= yield %>
+  <div class="content">
+    <div class="sidebar-nav">
+      <div class="new-trade-wrapper">
+        <%= link_to "Post a Trade", new_trade_path(), class: "new-trade-btn" %>
+      </div>
+
+      <ul class="sidebar-list">
+        <li class="sidebar-item"><%= link_to "Home", "#", class: "sidebar-link" %></li>
+        <li class="sidebar-item"><%= link_to "Bye", "#", class: "sidebar-link" %></li>
+        <li class="sidebar-item"><%= link_to "Hello", "#", class: "sidebar-link" %></li>
+        <li class="sidebar-item"><%= link_to "There", "#", class: "sidebar-link"   %></li>
+      </ul>
+    </div>
+    <div class="controller-content <%= params[:controller] %>">
+      <%= yield %>
+    </div>
   </div>
 </div>
 
 </body>
+
+<script type="text/javascript">
+  $('.trades-container').on('click', function(event) {
+    var $commentToggle = $(event.target).closest('.comment-toggle');
+    if ($commentToggle.hasClass('expandable')) {
+      $commentToggle.closest('.trade-footer').find('.comments-container').slideToggle();
+      event.preventDefault();
+    }
+  });
+</script>
 </html>

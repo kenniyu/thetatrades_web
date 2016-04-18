@@ -1,6 +1,7 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "globals";
 
 h1 {
   text-align: center;
@@ -8,4 +9,37 @@ h1 {
 
 h3 {
   text-align: center;
+}
+
+h6 {
+  text-transform: uppercase;
+  font-size: 16px;
+  margin: 20px 0;
+
+  .trades-container & {
+    color: rgb(180, 180, 180);
+  }
+}
+
+.trades-container {
+  max-width: 600px;
+  margin: auto;
+
+  ul.filter-list {
+    overflow: auto;
+
+    li {
+      float: left;
+      &.selected {
+        border-bottom: 3px solid $app-green;
+      }
+
+      a {
+        padding: 10px 20px;
+        color: rgb(50, 50, 60);
+        font-weight: 900;
+        display: inline-block;
+      }
+    }
+  }
 }
